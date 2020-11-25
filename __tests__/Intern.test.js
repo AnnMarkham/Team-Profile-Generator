@@ -1,8 +1,8 @@
-const { TestScheduler } = require('jest');
+
 const Intern = require('../lib/Intern');
 
 test("Test the Intern", () => {
-  intern = new Intern("Fred Flintstone", 42, "Fred.flinstone@bedrock.com", "school of hard rocks");
+  intern = new Intern("Nick Campbell", 42, "nick@google.com", "Fixion School");
 
   expect(intern.getRole()).toBe('Intern')
   expect(intern.getSchool()).toEqual(expect.any(String));
