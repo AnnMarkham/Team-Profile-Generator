@@ -14,59 +14,71 @@ const Manager = require('./lib/Manager.js');
 const teamMembers = [];
 
 const getEmployee = async () => {
-  const Employee = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'role',
-      message: 'Please select your role.',
-      choices: ['Manager', 'Engineer', 'Intern']
-    },
-    {
-      type: 'input',
-      name: 'name',
-      message: `Please Enter Name`,
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: 'Enter employee ID'
-    },
-    {
-      type: 'input',
-      name: 'email',
-      message: 'Enter employee email address'
-    },
-  ])
+  while (true) {
+    const Employee = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'role',
+        message: 'Please select your role.',
+        choices: ['Manager', 'Engineer', 'Intern']
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: `Please Enter Name`,
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'Enter employee ID'
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'Enter employee email address'
+      },
+    ])
 
-  if (Employee.role === "Manager") {
-    await inquirer.prompt([
+    if (Employee.role === "Manager") {
+      await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'officeNum',
+          message: 'What is your office number?'
+        }
+      ])
+      teamMembers.push(Employee)
+    }
+    else if (Employee.role === "Engineer") {
+      await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'github',
+          message: 'Enter GitHub username?'
+        }
+      ])
+      teamMembers.push(Employee)
+    }
+    else {
+      await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'school',
+          message: 'Enter Intern school name.'
+        }
+      ])
+      teamMembers.push(Employee)
+    }
+    const { another } = await inquirer.prompt([
       {
-        type: 'input',
-        name: 'officeNum',
-        message: 'What is your office number?'
+        name: 'another',
+        type: 'confirm',
+        message: 'Add another employee?'
       }
     ])
-    teamMembers.push(Employee)
-  }
-  else if (Employee.role === "Engineer") {
-    await inquirer.prompt([
-      {
-        type: 'input',
-        name: 'github',
-        message: 'Enter GitHub username?'
-      }
-    ])
-    teamMembers.push(Employee)
-  }
-  else {
-    await inquirer.prompt([
-      {
-        type: 'input',
-        name: 'school',
-        message: 'Enter Intern school name.'
-      }
-    ])
-    teamMembers.push(Employee)
+    if (!another) {
+      break;
+    }
   }
 }
 
