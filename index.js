@@ -1,44 +1,74 @@
-//require inquirer
+const inquirer = require('inquirer');
 // require generatePage-  see module.exports in src/index.js
-
+// const generatePage = require('./src/page-template.js');
+const Employee = require('./lib/Employee.js');
+const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
+const Manager = require('./lib/Manager.js');
 
 // add inquirer prompts to enter:
-  //team manager's name, 
-  //employee id;
-  //email address
-  //office number
+//team manager's name, 
+//employee id;
+//email address
+//office number
+const teamMembers = [];
 
-      //then menu with choices 
-          //['add and engineer', 'add an intern', 'finish building team']
+const getEmployee = async () => {
+  const Employee = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'role',
+      message: 'Please select your role.',
+      choices: ['Manager', 'Engineer', 'Intern']
+    },
+    {
+      type: 'input',
+      name: 'name',
+      message: `Please Enter Name`,
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'Enter employee ID'
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Enter employee email address'
+    },
+  ])
 
-              //if Engineer 
-                  // prompts:  
-                    //(*** How these inherit from Employee **  maybe at call getEmployee or some thing else)
-                      // Engineer name
-                      // ID
-                      // email
-            //?? Example does not show Engineer's manager or intern's manager - so could do first 3 prompt all togther and then present only the added questions if Engineer or Intern.
+  if (Employee.role === "Manager") {
+    await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'officeNum',
+        message: 'What is your office number?'
+      }
+    ])
+    teamMembers.push(Employee)
+  }
+  else if (Employee.role === "Engineer") {
+    await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'github',
+        message: 'Enter GitHub username?'
+      }
+    ])
+    teamMembers.push(Employee)
+  }
+  else {
+    await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'school',
+        message: 'Enter Intern school name.'
+      }
+    ])
+    teamMembers.push(Employee)
+  }
+}
 
-                  // added Engineer prompts
-                    //GitHub Username
-
-                    //.then back to menu (add Engineer, add intern or finish building team.)
-
-                //if Intern
-                    //prompts: 
-                      //Intern name
-                      //ID
-                      //email 
-                      //(?? see notes with Engineer)
-
-                    // added prompt 
-                      // school
-
-                    //.then return to main menu.
-
-                  //when select finish building team (then exit and generate html)  -- generatePage() -- see code in src/generatePage.js
-
-
-                  // ADD MEANINGFUL VALIDATION --  i.e. is there input? is this a valid email address.  is this a valid github link. etc.
-
+getEmployee();
 
