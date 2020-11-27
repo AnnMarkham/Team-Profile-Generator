@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 // require generatePage-  see module.exports in src/index.js
-// const generatePage = require('./src/page-template.js');
+const generatePage = require('./src/page-template.js');
 const Employee = require('./lib/Employee.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
@@ -80,7 +80,11 @@ const getEmployee = async () => {
       break;
     }
   }
+  //Generate Page
 }
 
-getEmployee();
+getEmployee().then(() => {
+  console.log(teamMembers);
+});
+
 
