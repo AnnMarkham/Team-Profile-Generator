@@ -1,13 +1,13 @@
 
 'use strict'
-const generateCards = members => {
-  const teamArr = members.map(({ name, id, email, role, ...other }) => {
+const generateCards = teamMembers => {
+  const teamArr = teamMembers.map(({ name, id, email, role, ...other }) => {
 
 
     let otherName = Object.getOwnPropertyNames(other)[0]
-    let otherVal = other[featureName];
+    let otherVal = other[otherName];
 
-    teamCardHtml = `
+    let teamCardHtml = `
         <div class="col-sm">         
             <div class="card bg-primary rounded" style="width: 18rem; margin-top: 20px;">   
                 <div class="card-body">
@@ -21,6 +21,7 @@ const generateCards = members => {
                 </div>
             </div>
         </div>
+
         `
 
     return teamCardHtml;
@@ -29,7 +30,7 @@ const generateCards = members => {
   return teamArr.join('');
 }
 
-const generatePage = (members) => {
+const generatePage = (teamMembers) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -49,7 +50,7 @@ const generatePage = (members) => {
             
             <div class="container">
                 <div class="row">
-                    ${generateCards(members)}
+                    ${generateCards(teamMembers)}
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>    

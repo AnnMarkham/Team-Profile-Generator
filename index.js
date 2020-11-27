@@ -5,6 +5,8 @@ const Employee = require('./lib/Employee.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const Manager = require('./lib/Manager.js');
+const { writeFile } = require('./utils/generate-site.js');
+
 
 // add inquirer prompts to enter:
 //team manager's name, 
@@ -77,10 +79,14 @@ const getEmployee = async () => {
       }
     ])
     if (!another) {
-      break;
+
+      let html = generatePage(teamMembers);
+
+      writeFile(html)
+      return teamMembers;
     }
   }
-  //Generate Page
+
 }
 
 getEmployee().then(() => {
