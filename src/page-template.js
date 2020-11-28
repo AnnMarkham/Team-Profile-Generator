@@ -1,4 +1,3 @@
-
 'use strict'
 const generateCards = teamMembers => {
   const teamArr = teamMembers.map(({ name, id, email, role, other }) => {
@@ -36,7 +35,11 @@ const generatePage = (teamMembers) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TeamChart</title>
-       
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+    </head>
         <body>
             
             <header id = "headerbar">
@@ -50,7 +53,8 @@ const generatePage = (teamMembers) => {
                     ${generateCards(teamMembers)}
                 </div>
             </div>
-          
+           
+        </body>
     </html`
 };
 
