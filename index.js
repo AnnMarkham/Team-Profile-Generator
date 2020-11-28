@@ -14,10 +14,11 @@ const { writeFile } = require('./utils/generate-site.js');
 //email address
 //office number
 const teamMembers = [];
+let newMember = {};
 
 const getEmployee = async () => {
   while (true) {
-    const Employee = await inquirer.prompt([
+    let Employee = await inquirer.prompt([
       {
         type: 'list',
         name: 'role',
@@ -42,35 +43,52 @@ const getEmployee = async () => {
     ])
 
     if (Employee.role === "Manager") {
-      await inquirer.prompt([
+      other = await inquirer.prompt([
         {
           type: 'input',
-          name: 'officeNum',
+          name: 'other',
           message: 'What is your office number?'
         }
       ])
-      teamMembers.push(Employee)
+      console.log(other, typeof other, "other");
+      console.log(Employee, typeof Employee, "Employee");
+
+      newMember = {
+        ...Employee,
+        ...other
+      }
+
     }
     else if (Employee.role === "Engineer") {
-      await inquirer.prompt([
+      other = await inquirer.prompt([
         {
           type: 'input',
-          name: 'github',
+          name: 'other',
           message: 'Enter GitHub username?'
         }
       ])
-      teamMembers.push(Employee)
+      newMember = {
+        ...Employee,
+        ...other
+      }
+
     }
     else {
-      await inquirer.prompt([
+      other = await inquirer.prompt([
         {
           type: 'input',
-          name: 'school',
+          name: 'other',
           message: 'Enter Intern school name.'
         }
       ])
-      teamMembers.push(Employee)
+      newMember = {
+        ...Employee,
+        ...other
+      }
     }
+
+    teamMembers.push(newMember);
+
     const { another } = await inquirer.prompt([
       {
         name: 'another',
@@ -78,6 +96,7 @@ const getEmployee = async () => {
         message: 'Add another employee?'
       }
     ])
+
     if (!another) {
 
       let html = generatePage(teamMembers);
@@ -92,5 +111,3 @@ const getEmployee = async () => {
 getEmployee().then(() => {
   console.log(teamMembers);
 });
-
-
