@@ -19,9 +19,11 @@ Launch from command line using node index.js
 Answer questions when prompted.  When complete, open index.html to view page.  
 
 Screenshot of page: 
-![Screenshot](assets/images/Team Profile Generator.png)
 
-<iframe src="https://drive.google.com/file/d/19TqopkK4vF4yqP-zJNVQpHeTktWCFifP/preview" width="640" height="480"></iframe>
+![Team Profile Generator Screenshot ](./Assets/images/Team Profile Generator.png)
+
+
+![Demo of Application](<iframe src="https://drive.google.com/file/d/19TqopkK4vF4yqP-zJNVQpHeTktWCFifP/preview" width="640" height="480"></iframe>)
 
 
 ## Tests 
