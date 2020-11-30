@@ -20,10 +20,10 @@ Answer questions when prompted.  When complete, open index.html to view page.
 
 Screenshot of page: 
 
-![Team Profile Generator Screenshot ](./Assets/images/Team Profile Generator.png)
+![Team Profile Generator Screenshot ](.assets/images/Team Profile Generator.PNG)
 
 
-![Demo of Application](<iframe src="https://drive.google.com/file/d/19TqopkK4vF4yqP-zJNVQpHeTktWCFifP/preview" width="640" height="480"></iframe>)
+![Demo of Application]("https://drive.google.com/file/d/19TqopkK4vF4yqP-zJNVQpHeTktWCFifP/preview")
 
 
 ## Tests 
