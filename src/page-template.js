@@ -6,8 +6,10 @@ const Employee = require('../lib/Employee.js')
 const generateCards = teamMembers => {
     const teamArr = teamMembers.map(({ name, id, email, role, other }) => {
 
-        let teamCardHtml =
-            `` `
+        if (role === "Engineer") {
+            let teamCardHtml =
+
+                `
         <div class="col-sm">         
             <div class="card bg-primary" style="width: 18rem; margin-top: 20px;">   
                <div class="card-body">
@@ -16,34 +18,59 @@ const generateCards = teamMembers => {
                     <ul class="list-group">
                         <li class="list-group-item">Id: ${id}</li>
                         <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>  
-                        `
-        if (role === "Engineer") {
+                        
 
-            `<li class="list-group-item">gitHub: <a href="other:${other}">${other}</a></li> 
-            </ul>
+
+                       <li class="list-group-item">gitHub: <a href="other:${other}">${other}</a></li>  
+                    </ul>
                 </div>
             </div>
-        </div>`
-
-
+        </div>
+        `
+            return teamCardHtml;
         }
         else if (role === "Manager") {
-            `<li class="list-group-item other">Office Number: ${other}</li> 
-            </ul>
+            let teamCardHtml =
+                `
+      
+            <div class="col-sm">
+            <div class="card bg-primary" style="width: 18rem; margin-top: 20px;">
+               <div class="card-body">
+                  <h2 class ="card-title text-white">${name}</h2>
+                  <h5 class="card-title text-white";" >${role}</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">Id: ${id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>  
+                        <li class="list-group-item other">Office Number: ${other}</li> 
+                    </ul>
                 </div>
             </div>
-        </div>`
+        </div>
+        `
+            return teamCardHtml;
         }
         else if (role === "Intern") {
-            ` <li class="list-group-item other">School: ${other}</li>
-            </ul>
+
+            let teamCardHtml =
+
+                `
+        <div class="col-sm">         
+            <div class="card bg-primary" style="width: 18rem; margin-top: 20px;">   
+               <div class="card-body">
+                  <h2 class ="card-title text-white">${name}</h2>
+                  <h5 class="card-title text-white";" >${role}</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">Id: ${id}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>  
+                        <li class="list-group-item other">School: ${other}</li> 
+                    </ul>
                 </div>
             </div>
-        </div>`
+        </div>
+        `
+            return teamCardHtml;
         }
-        ``
 
-        return teamCardHtml;
 
     })
 

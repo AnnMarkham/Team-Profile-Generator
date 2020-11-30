@@ -29,17 +29,45 @@ const getEmployee = async () => {
         type: 'input',
         name: 'name',
         message: `Please Enter Name`,
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          }
+          else {
+            console.log("Please enter a name");
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'id',
-        message: 'Enter employee ID'
+        message: 'Enter employee ID',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          }
+          else {
+            console.log('Enter Employee Id.');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'email',
-        message: 'Enter employee email address'
-      },
+        message: 'Enter employee email address',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          }
+          else {
+            console.log('Enter Email');
+            return false;
+          }
+        },
+      }
+
     ])
 
     if (Employee.role === "Manager") {
